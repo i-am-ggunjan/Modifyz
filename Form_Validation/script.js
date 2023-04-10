@@ -29,8 +29,19 @@ form.addEventListener("submit", (e) => {
     return false;
   }
 
-  console.log(name);
-  console.log(email);
-  console.log(address);
-  console.log(message);
+  const obj = {
+    name,
+    email,
+    address,
+    message,
+  };
+  fetch("http://192.168.1.3:3000/first", {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(obj),
+  }).then((res) => {
+    res.json().then((data) => {
+      console.log(data);
+    });
+  });
 });
