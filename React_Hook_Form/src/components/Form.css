@@ -1,0 +1,51 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+h1 {
+  color: red;
+  font-family: cursive;
+  font-size: 30px;
+}
+
+section {
+  background-color: rgb(201, 204, 206);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: rgba(214, 218, 222, 0.639);
+}
+
+form input {
+  border-radius: 5px;
+  padding: 5px 0 5px 10px;
+  border: none;
+}
+
+form div p {
+  color: red;
+  font-size: 12px;
+}
+
+button {
+  padding: 5px 15px;
+  border-radius: 6px;
+  border: none;
+}
+
+button:hover {
+  transition-property: all;
+  transition-duration: 2s;
+  background-color: rgb(109, 225, 157);
+}
