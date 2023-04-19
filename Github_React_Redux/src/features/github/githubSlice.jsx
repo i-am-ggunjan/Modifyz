@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const githubSlice = createSlice({
-  name: "product",
+  name: "github",
   initialState: {
     data: [],
   },
