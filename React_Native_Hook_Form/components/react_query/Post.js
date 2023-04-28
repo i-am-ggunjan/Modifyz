@@ -1,22 +1,26 @@
 import React from "react";
 import { Button, Text, TextInput, View } from "react-native";
 import { useForm, Controller } from "react-hook-form";
-import FormStyle from "./FormStyle";
+import FormStyle from "../FormStyle";
+import { useMutation } from "react-query";
 
-const Form = () => {
+const Post = () => {
   const form = useForm({});
 
   const { control, handleSubmit, formState } = form;
   const { errors } = formState;
 
-  const onSubmit = (data) => {
+  const { mutate } = useMutation((formData) =>
     fetch("http://192.168.174.193:3000/first", {
-      method: "post",
+      method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+      body: JSON.stringify(formData),
+    }).then((res) => res.json())
+  );
 
-    console.warn(data);
+  const onSubmit = (formData) => {
+    mutate(formData);
+    console.warn(formData);
   };
 
   return (
@@ -63,7 +67,7 @@ const Form = () => {
             }}
             render={({ field: { onChange, value } }) => (
               <TextInput
-                placeholder="abc@gmail.com"
+                placeholder="krishna@gmail.com"
                 onChangeText={onChange}
                 value={value}
                 style={FormStyle.input}
@@ -108,4 +112,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default Post;
