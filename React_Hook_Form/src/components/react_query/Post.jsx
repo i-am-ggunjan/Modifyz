@@ -1,18 +1,23 @@
-import React, { useEffect, useState } from "react";
-import "./Form.css";
+import "../Form";
 import { useForm } from "react-hook-form";
+import { useMutation } from "react-query";
 
-const Form = () => {
+const Post = () => {
   const form = useForm();
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
 
-  const onSubmit = (data) => {
+  const { mutate } = useMutation((formData) =>
     fetch("http://localhost:4000/register", {
-      method: "post",
+      method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+      body: JSON.stringify(formData),
+    }).then((res) => res.json())
+  );
+
+  const onSubmit = (formData) => {
+    mutate(formData);
+    console.log(formData)
   };
 
   return (
@@ -70,4 +75,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default Post;

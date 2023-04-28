@@ -1,8 +1,16 @@
 import React from "react";
-import Form from "./components/Form";
+import Post from "./components/react_query/Post";
+import { QueryClient, QueryClientProvider } from "react-query";
+import Get from "./components/react_query/Get";
+
+const queryClient = new QueryClient();
 
 const App = () => {
-  return <Form />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Post />
+    </QueryClientProvider>
+  );
 };
 
 export default App;
